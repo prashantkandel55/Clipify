@@ -1,0 +1,62 @@
+{
+  "name": "clipify",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Clipify",
+  "description": "AI-powered video-to-shorts converter with auto-captions",
+  "main": "main.cjs",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite --port 5180",
+    "dev:electron": "wait-on http://localhost:5180 && electron .",
+    "build": "vite build && electron-builder --win --dir",
+    "build:win": "vite build && electron-builder --win --dir"
+  },
+  "build": {
+    "appId": "com.clipify.app",
+    "productName": "Clipify",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "build/**/*",
+      "main.cjs",
+      "preload.cjs",
+      "backend/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/",
+        "to": "node_modules/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": "dir"
+    },
+    "asar": false,
+    "npmRebuild": false
+  },
+  "dependencies": {
+    "electron-log": "^5.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "electron-packager": "^17.1.2",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.0",
+    "wait-on": "^7.2.0"
+  }
+}
