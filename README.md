@@ -1,7 +1,7 @@
 # 🎬 Clipify
 
 <p align="center">
-  <img src="logo.png" alt="Clipify Logo" width="200"/>
+  <img src="logo.png?v=2" alt="Clipify Logo" width="200"/>
 </p>
 
 <p align="center">
